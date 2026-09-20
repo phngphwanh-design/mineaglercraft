@@ -1,55 +1,418 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MineXLauncher</title>
-  <meta name="description" content="MineXLauncher-style Eaglercraft launcher" />
-  <style>
-    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;background:#1e1e1e;color:#fff}body{display:flex;align-items:center;justify-content:center;overflow:hidden}.launcher{width:75vw;height:95vh;min-height:560px;margin:15px auto;background:#333;border-radius:8px;overflow:hidden;box-shadow:0 0 20px #0008;display:flex;flex-direction:column}.title-bar{background:#2c2c2c;padding:10px;text-align:center;color:#ddd;font-size:14px;font-weight:600;box-shadow:0 2px 4px #0005}.content{display:flex;flex:1;overflow:hidden}.sidebar{background:#242424;width:200px;display:flex;flex-direction:column;flex-shrink:0;border-right:1px solid #333}.username{padding:20px 10px;border-bottom:1px solid #333;text-align:center;font-weight:bold;font-size:16px}.nav-bar{list-style:none;padding:0;margin:0;flex-grow:1;overflow-y:auto}.nav-bar li{display:flex;align-items:center;padding:15px 20px;cursor:pointer;transition:background .2s}.nav-bar li:hover,.nav-bar li.selected{background:#444}.nav-icon{width:24px;margin-right:15px;text-align:center;font-size:20px}.nav-bar li span:last-child{font-size:14px}.main-panel{flex:1;display:flex;flex-direction:column;background:#202020;min-width:0}.top-nav{background:#2c2c2c;padding:10px 20px;box-shadow:0 2px 4px #0005;flex-shrink:0}.top-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:20px}.top-nav li{cursor:pointer;font-size:16px;color:#ccc;padding:4px 0}.top-nav li:hover,.top-nav li.selected{color:#fff;font-weight:bold}.main-content{display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;overflow:auto;background:radial-gradient(circle,#343434,#202020 70%);text-align:center}.logo{font-size:clamp(30px,6vw,74px);font-weight:900;letter-spacing:-4px;text-shadow:0 5px #111,0 10px 20px #0009}.subtitle{margin-top:12px;color:#bbb;font-size:14px}.installations{display:flex;align-items:center;justify-content:space-between;width:100%;background:#292929;padding:10px 20px;border-top:1px solid #333}.installations>div{position:relative;width:250px}.selector{display:flex;align-items:center;justify-content:center;font-size:16px;padding:10px;border:2px solid #000;background:#048239;color:#fff;cursor:pointer;box-shadow:4px 4px #4e4e50;user-select:none}.selector:after{content:'⌄';margin-left:auto}.options{position:absolute;bottom:calc(100% + 2px);left:0;right:0;border:2px solid #000;background:#035525;box-shadow:4px 4px #4e4e50;display:none;max-height:210px;overflow:auto;z-index:5}.options.open{display:block}.options>div{display:flex;align-items:center;padding:10px;cursor:pointer;border-bottom:1px solid #000}.options>div:hover{background:#127e3f}.version-icon{width:26px;height:26px;margin-right:10px;display:grid;place-items:center;background:#5c9e42;border:2px solid #2e5a29}.installations button{background:#0f990f;border:2px solid #007700;padding:10px 40px;border-radius:5px;cursor:pointer;color:#fff;font-size:16px;font-weight:bold;text-transform:uppercase;transition:.2s}.installations button:hover{background:#17b117;transform:scale(1.05)}.bottom-bar{background:#2c2c2c;padding:10px 20px;display:flex;justify-content:space-between;color:#ddd;font-size:12px;border-top:1px solid #333}.bottom-bar span:first-child{cursor:pointer}.bottom-bar span:first-child:hover{text-decoration:underline}.game-overlay{display:none;position:fixed;inset:0;background:#000;z-index:20}.game-overlay.open{display:block}.game-overlay iframe{width:100%;height:100%;border:0}.close-game{position:fixed;right:14px;top:10px;z-index:21;border:0;border-radius:4px;padding:8px 12px;background:#b22;color:#fff;cursor:pointer}@media(max-width:800px){body{overflow:auto}.launcher{width:100vw;height:100vh;margin:0;border-radius:0}.sidebar{width:70px}.username{display:none}.nav-bar li{justify-content:center;padding:15px 5px}.nav-bar li span:last-child{display:none}.nav-icon{margin:0}.top-nav{overflow:auto}.top-nav ul{white-space:nowrap}.installations{gap:10px}.installations>div{flex:1;min-width:0}.installations button{padding:10px 20px}.bottom-bar{font-size:10px}}
-  </style>
-</head>
-<body>
-  <div class="launcher">
-    <span class="title-bar">MineXLauncher</span>
-    <div class="content">
-      <aside class="sidebar">
-        <span class="username">MineXLauncher</span>
-        <nav class="nav-bar">
-          <li class="selected"><span class="nav-icon">🎮</span><span>Game</span></li>
-          <li><span class="nav-icon">🧩</span><span>Clients</span></li>
-          <li><span class="nav-icon">🌐</span><span>Server List</span></li>
-          <li><span class="nav-icon">🛠️</span><span>Mods</span></li>
-          <li><span class="nav-icon">📖</span><span>Tutorials</span></li>
-          <li><span class="nav-icon">⚙️</span><span>Settings</span></li>
-        </nav>
-      </aside>
-      <main class="main-panel">
-        <nav class="top-nav"><ul><li class="selected">Game</li><li>Clients</li><li>Archive</li><li>Offline Downloads</li></ul></nav>
-        <section class="main-content"><div class="logo">MINEAGLERCRAFT</div><div class="subtitle">MineXLauncher-style Eaglercraft launcher</div></section>
-        <div class="installations">
-          <div>
-            <div class="selector" id="selector">Selected: 1.8.8</div>
-            <div class="options" id="options">
-              <div data-url="https://eaglercraft.com/play?version=1.8.8-wasm" data-name="1.8.8"><span class="version-icon">🌿</span><span>1.8.8</span></div>
-              <div data-url="https://eaglercraft.com/play?version=1.12.2" data-name="1.12.2"><span class="version-icon">🟫</span><span>1.12.2</span></div>
-              <div data-url="https://eaglercraft.com/play?version=1.20.4" data-name="1.20.4"><span class="version-icon">🟦</span><span>1.20.4</span></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mineaglercraft | Web Edition</title>
+    <style>
+      :root {
+        --bg: #1e1e1e;
+        --panel: #2c2c2c;
+        --panel-2: #242424;
+        --panel-3: #202020;
+        --panel-4: #292929;
+        --green: #0f990f;
+        --green-2: #17b117;
+        --green-dark: #007700;
+        --line: #3a3a3a;
+        --text: #ffffff;
+        --muted: #d0d0d0;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        min-height: 100%;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+
+      .launcher {
+        width: 75vw;
+        height: 95vh;
+        min-height: 560px;
+        background: #333;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .title-bar {
+        background: var(--panel);
+        padding: 10px;
+        text-align: center;
+        color: #ddd;
+        font-size: 14px;
+        font-weight: 600;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .content {
+        display: flex;
+        flex: 1;
+        overflow: hidden;
+      }
+
+      .sidebar {
+        background: var(--panel-2);
+        width: 200px;
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        border-right: 1px solid var(--line);
+      }
+
+      .username {
+        padding: 20px 10px;
+        border-bottom: 1px solid var(--line);
+        text-align: center;
+        font-weight: bold;
+        display: block;
+        font-size: 16px;
+      }
+
+      .nav-bar {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex: 1;
+      }
+
+      .nav-bar li {
+        display: flex;
+        align-items: center;
+        padding: 15px 20px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+        color: #ddd;
+      }
+
+      .nav-bar li:hover,
+      .nav-bar li.selected {
+        background: #444;
+      }
+
+      .nav-bar li .icon {
+        display: inline-block;
+        width: 24px;
+        margin-right: 15px;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .main-panel {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        background: var(--panel-3);
+        min-width: 0;
+      }
+
+      .top-nav {
+        background: var(--panel);
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        flex-shrink: 0;
+      }
+
+      .top-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 20px;
+      }
+
+      .top-nav li {
+        color: #ccc;
+        cursor: pointer;
+        font-size: 16px;
+        transition: color 0.2s ease;
+      }
+
+      .top-nav li.selected,
+      .top-nav li:hover {
+        color: #fff;
+        font-weight: bold;
+      }
+
+      .main-content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background: radial-gradient(circle at center, #343434 0%, #202020 70%);
+      }
+
+      .logo {
+        font-size: clamp(30px, 6vw, 74px);
+        font-weight: 900;
+        letter-spacing: -4px;
+        text-transform: uppercase;
+        text-shadow: 0 5px #111, 0 12px 26px rgba(0, 0, 0, 0.6);
+      }
+
+      .installations {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        background: var(--panel-4);
+        box-sizing: border-box;
+        border-top: 1px solid var(--line);
+        padding: 10px 20px;
+      }
+
+      .installations > div {
+        position: relative;
+        display: inline-block;
+        width: 250px;
+      }
+
+      .selector {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1em;
+        padding: 10px;
+        border: 2px solid #000;
+        background: #048239;
+        color: #fff;
+        cursor: pointer;
+        box-shadow: 4px 4px #4e4e50;
+        user-select: none;
+      }
+
+      .selector:after {
+        content: '⌄';
+        margin-left: 10px;
+        font-size: 18px;
+      }
+
+      .options {
+        position: absolute;
+        bottom: calc(100% + 3px);
+        left: 0;
+        right: 0;
+        border: 2px solid #000;
+        border-bottom: none;
+        background: #035525;
+        box-shadow: 4px 4px #4e4e50;
+        display: none;
+        border-radius: 5px 5px 0 0;
+        color: #fff;
+        max-height: 220px;
+        overflow: auto;
+      }
+
+      .options.open {
+        display: block;
+      }
+
+      .options > div {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        cursor: pointer;
+        border-bottom: 1px solid #000;
+      }
+
+      .options > div:hover {
+        background: #127e3f;
+      }
+
+      .options .version-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        margin-right: 10px;
+        background: #5c9e42;
+        border: 2px solid #2e5a29;
+      }
+
+      .play {
+        background: var(--green);
+        border: 2px solid var(--green-dark);
+        padding: 10px 40px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+      }
+
+      .play:hover {
+        background: var(--green-2);
+        transform: scale(1.05);
+      }
+
+      .bottom-bar {
+        background: var(--panel);
+        padding: 10px 20px;
+        display: flex;
+        justify-content: space-between;
+        color: #ddd;
+        font-size: 12px;
+        border-top: 1px solid var(--line);
+      }
+
+      .bottom-bar span:first-child {
+        cursor: pointer;
+      }
+
+      .bottom-bar span:first-child:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 900px) {
+        body {
+          overflow: auto;
+        }
+
+        .launcher {
+          width: 100vw;
+          height: 100vh;
+          margin: 0;
+          border-radius: 0;
+        }
+
+        .sidebar {
+          width: 70px;
+        }
+
+        .username {
+          display: none;
+        }
+
+        .nav-bar li {
+          justify-content: center;
+          padding: 15px 5px;
+        }
+
+        .nav-bar li .label {
+          display: none;
+        }
+
+        .nav-bar li .icon {
+          margin: 0;
+        }
+
+        .top-nav {
+          overflow: auto;
+        }
+
+        .top-nav ul {
+          white-space: nowrap;
+        }
+
+        .installations {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .installations > div,
+        .installations button {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="launcher">
+      <div class="title-bar">MineXLauncher</div>
+
+      <div class="content">
+        <aside class="sidebar">
+          <span class="username">Mineaglercraft</span>
+          <nav class="nav-bar" aria-label="Launcher navigation">
+            <li class="selected"><span class="icon">🎮</span><span class="label">Game</span></li>
+            <li><span class="icon">🧩</span><span class="label">Clients</span></li>
+            <li><span class="icon">🌐</span><span class="label">Server List</span></li>
+            <li><span class="icon">🛠️</span><span class="label">Mods</span></li>
+            <li><span class="icon">📖</span><span class="label">Tutorials</span></li>
+            <li><span class="icon">⚙️</span><span class="label">Settings</span></li>
+          </nav>
+        </aside>
+
+        <main class="main-panel">
+          <nav class="top-nav" aria-label="Page navigation">
+            <ul>
+              <li class="selected">Game</li>
+              <li>Clients</li>
+              <li>Archive</li>
+              <li>Offline Downloads</li>
+            </ul>
+          </nav>
+
+          <section class="main-content">
+            <div class="logo">Mineaglercraft</div>
+          </section>
+
+          <div class="installations">
+            <div>
+              <div class="selector" id="selector">Selected: 1.8.8</div>
+              <div class="options" id="options">
+                <div data-url="https://eaglercraft.com/play?version=1.8.8-wasm"><span class="version-icon">🌿</span><span>1.8.8</span></div>
+                <div data-url="https://eaglercraft.com/play?version=1.12.2"><span class="version-icon">🟫</span><span>1.12.2</span></div>
+                <div data-url="https://eaglercraft.com/play?version=1.20.4"><span class="version-icon">🟦</span><span>1.20.4</span></div>
+              </div>
             </div>
+
+            <button class="play" id="play" type="button">Play</button>
           </div>
-          <button id="play" type="button">Play</button>
-        </div>
-      </main>
+        </main>
+      </div>
+
+      <div class="bottom-bar">
+        <span onclick="window.open('https://github.com/phngphwanh-design/mineaglercraft', '_blank')">Mineaglercraft GitHub</span>
+        <span>© 2026 Mineaglercraft</span>
+      </div>
     </div>
-    <div class="bottom-bar"><span onclick="window.open('https://github.com/phngphwanh-design/mineaglercraft','_blank')">Mineaglercraft GitHub</span><span>© 2026 MineXLauncher</span></div>
-  </div>
-  <div class="game-overlay" id="gameOverlay"><button class="close-game" id="closeGame">Close</button><iframe id="gameFrame" title="Eaglercraft"></iframe></div>
-  <script>
-    let selectedVersion='https://eaglercraft.com/play?version=1.8.8-wasm';
-    const selector=document.getElementById('selector'), options=document.getElementById('options');
-    selector.addEventListener('click',()=>options.classList.toggle('open'));
-    document.querySelectorAll('[data-url]').forEach(item=>item.addEventListener('click',()=>{selectedVersion=item.dataset.url;selector.textContent='Selected: '+item.dataset.name;options.classList.remove('open')}));
-    document.addEventListener('click',event=>{if(!event.target.closest('.installations'))options.classList.remove('open')});
-    document.getElementById('play').addEventListener('click',()=>{window.location.href=selectedVersion});
-  </script>
-</body>
+
+    <script>
+      let selectedVersion = 'https://eaglercraft.com/play?version=1.8.8-wasm';
+
+      const selector = document.getElementById('selector');
+      const options = document.getElementById('options');
+
+      selector.addEventListener('click', () => {
+        options.classList.toggle('open');
+      });
+
+      document.querySelectorAll('#options > div').forEach((item) => {
+        item.addEventListener('click', () => {
+          selectedVersion = item.dataset.url;
+          selector.textContent = 'Selected: ' + item.textContent.trim();
+          options.classList.remove('open');
+        });
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!event.target.closest('.selector') && !event.target.closest('.options')) {
+          options.classList.remove('open');
+        }
+      });
+
+      document.getElementById('play').addEventListener('click', () => {
+        window.location.href = selectedVersion;
+      });
+    </script>
+  </body>
 </html>
