@@ -1,105 +1,55 @@
 <!doctype html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mineaglercraft Launcher</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MineXLauncher</title>
+  <meta name="description" content="MineXLauncher-style Eaglercraft launcher" />
   <style>
-    :root{--bg:#0d1014;--panel:#151a20;--panel2:#1b222a;--line:#303943;--text:#f4f7fa;--muted:#aab4bf;--green:#19bd62;--green-dark:#087c3c}
-    *{box-sizing:border-box}
-    html,body{margin:0;min-height:100%;font-family:Inter,system-ui,sans-serif;color:var(--text);background:var(--bg)}
-    body{min-height:100vh;background:linear-gradient(120deg,#0d1014e8,#111820d9),url('background.svg') center/cover fixed}
-    button{font:inherit}
-    .launcher{width:min(1180px,calc(100% - 28px));min-height:720px;height:calc(100vh - 28px);margin:14px auto;display:flex;flex-direction:column;overflow:hidden;background:#11161bd9;border:1px solid #ffffff18;border-radius:8px;box-shadow:0 22px 70px #0009}
-    .title-bar{height:48px;display:flex;align-items:center;padding:0 20px;color:#dce4ec;font-size:14px;font-weight:800;border-bottom:1px solid #ffffff12;background:#11161ccc}
-    .content{flex:1;display:flex;min-height:0}
-    .sidebar{width:220px;flex:none;padding:22px 14px;background:#14191fdd;border-right:1px solid #ffffff12}
-    .username{display:block;margin:0 10px 25px;color:#fff;font-weight:800;font-size:16px}
-    .nav-bar{display:grid;gap:7px}
-    .nav-bar li{list-style:none;display:flex;align-items:center;gap:12px;padding:12px 10px;border-radius:5px;color:var(--muted);font-size:13px;cursor:pointer}
-    .nav-bar li:hover,.nav-bar li.selected{color:#fff;background:#ffffff12}
-    .nav-bar li.selected{box-shadow:inset 3px 0 var(--green)}
-    .nav-bar img{width:24px;height:24px;object-fit:contain}
-    .main-panel{flex:1;min-width:0;display:flex;flex-direction:column}
-    .top-nav{height:58px;display:flex;align-items:center;padding:0 28px;border-bottom:1px solid #ffffff12;background:#151b21aa}
-    .top-nav ul{display:flex;gap:25px;padding:0;margin:0;list-style:none}
-    .top-nav li{color:var(--muted);font-size:13px;cursor:pointer;padding:20px 0}
-    .top-nav li:hover,.top-nav li.selected{color:#fff;border-bottom:2px solid var(--green)}
-    .main-content{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:32px;background:radial-gradient(circle at center,#24313d33,transparent 65%)}
-    .hero{text-align:center}
-    .hero h1{margin:0;font-size:clamp(32px,6vw,72px);font-weight:900;letter-spacing:-.07em;text-shadow:0 5px 0 #000,0 12px 24px #0009}
-    .hero p{margin:12px 0 0;color:var(--muted);font-size:14px}
-    .installations{display:flex;align-items:center;gap:12px;padding:20px 28px;border-top:1px solid #ffffff12;background:#141a20}
-    .selector-wrap{position:relative;flex:1;max-width:460px}
-    .selector{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border:1px solid var(--line);border-radius:5px;background:var(--panel2);color:#fff;font-size:14px;cursor:pointer}
-    .selector:after{content:'⌄';font-size:20px;color:var(--muted)}
-    .options{display:none;position:absolute;z-index:5;left:0;right:0;bottom:54px;padding:6px;border:1px solid var(--line);border-radius:5px;background:#171d23;box-shadow:0 12px 30px #0009}
-    .options.open{display:grid;gap:3px}
-    .options div{display:flex;align-items:center;gap:10px;padding:10px;border-radius:4px;color:var(--muted);font-size:13px;cursor:pointer}
-    .options div:hover{background:#ffffff12;color:#fff}
-    .options img{width:24px;height:24px;object-fit:contain}
-    .play{height:48px;min-width:130px;padding:0 25px;border:1px solid #2ee77d;border-radius:5px;background:linear-gradient(#25dc76,var(--green-dark));color:#fff;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 3px 0 #064b27}
-    .play:hover{filter:brightness(1.12)}
-    .bottom-bar{display:flex;justify-content:space-between;gap:15px;padding:12px 20px;color:#7f8b97;font-size:11px;border-top:1px solid #ffffff12;background:#10151a}
-    .bottom-bar span:first-child{color:#c7d0d9;cursor:pointer}
-    @media(max-width:700px){.launcher{width:100%;height:100vh;min-height:620px;margin:0;border-radius:0}.sidebar{width:74px;padding:18px 8px}.username{display:none}.nav-bar li{justify-content:center;padding:12px 7px}.nav-bar li span{display:none}.top-nav{padding:0 15px;overflow:auto}.top-nav ul{gap:18px;white-space:nowrap}.main-content{padding:20px}.installations{padding:14px;flex-direction:column}.selector-wrap,.play{width:100%;max-width:none}.bottom-bar{font-size:10px}}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,sans-serif;background:#1e1e1e;color:#fff}body{display:flex;align-items:center;justify-content:center;overflow:hidden}.launcher{width:75vw;height:95vh;min-height:560px;margin:15px auto;background:#333;border-radius:8px;overflow:hidden;box-shadow:0 0 20px #0008;display:flex;flex-direction:column}.title-bar{background:#2c2c2c;padding:10px;text-align:center;color:#ddd;font-size:14px;font-weight:600;box-shadow:0 2px 4px #0005}.content{display:flex;flex:1;overflow:hidden}.sidebar{background:#242424;width:200px;display:flex;flex-direction:column;flex-shrink:0;border-right:1px solid #333}.username{padding:20px 10px;border-bottom:1px solid #333;text-align:center;font-weight:bold;font-size:16px}.nav-bar{list-style:none;padding:0;margin:0;flex-grow:1;overflow-y:auto}.nav-bar li{display:flex;align-items:center;padding:15px 20px;cursor:pointer;transition:background .2s}.nav-bar li:hover,.nav-bar li.selected{background:#444}.nav-icon{width:24px;margin-right:15px;text-align:center;font-size:20px}.nav-bar li span:last-child{font-size:14px}.main-panel{flex:1;display:flex;flex-direction:column;background:#202020;min-width:0}.top-nav{background:#2c2c2c;padding:10px 20px;box-shadow:0 2px 4px #0005;flex-shrink:0}.top-nav ul{list-style:none;margin:0;padding:0;display:flex;gap:20px}.top-nav li{cursor:pointer;font-size:16px;color:#ccc;padding:4px 0}.top-nav li:hover,.top-nav li.selected{color:#fff;font-weight:bold}.main-content{display:flex;flex:1;flex-direction:column;align-items:center;justify-content:center;overflow:auto;background:radial-gradient(circle,#343434,#202020 70%);text-align:center}.logo{font-size:clamp(30px,6vw,74px);font-weight:900;letter-spacing:-4px;text-shadow:0 5px #111,0 10px 20px #0009}.subtitle{margin-top:12px;color:#bbb;font-size:14px}.installations{display:flex;align-items:center;justify-content:space-between;width:100%;background:#292929;padding:10px 20px;border-top:1px solid #333}.installations>div{position:relative;width:250px}.selector{display:flex;align-items:center;justify-content:center;font-size:16px;padding:10px;border:2px solid #000;background:#048239;color:#fff;cursor:pointer;box-shadow:4px 4px #4e4e50;user-select:none}.selector:after{content:'⌄';margin-left:auto}.options{position:absolute;bottom:calc(100% + 2px);left:0;right:0;border:2px solid #000;background:#035525;box-shadow:4px 4px #4e4e50;display:none;max-height:210px;overflow:auto;z-index:5}.options.open{display:block}.options>div{display:flex;align-items:center;padding:10px;cursor:pointer;border-bottom:1px solid #000}.options>div:hover{background:#127e3f}.version-icon{width:26px;height:26px;margin-right:10px;display:grid;place-items:center;background:#5c9e42;border:2px solid #2e5a29}.installations button{background:#0f990f;border:2px solid #007700;padding:10px 40px;border-radius:5px;cursor:pointer;color:#fff;font-size:16px;font-weight:bold;text-transform:uppercase;transition:.2s}.installations button:hover{background:#17b117;transform:scale(1.05)}.bottom-bar{background:#2c2c2c;padding:10px 20px;display:flex;justify-content:space-between;color:#ddd;font-size:12px;border-top:1px solid #333}.bottom-bar span:first-child{cursor:pointer}.bottom-bar span:first-child:hover{text-decoration:underline}.game-overlay{display:none;position:fixed;inset:0;background:#000;z-index:20}.game-overlay.open{display:block}.game-overlay iframe{width:100%;height:100%;border:0}.close-game{position:fixed;right:14px;top:10px;z-index:21;border:0;border-radius:4px;padding:8px 12px;background:#b22;color:#fff;cursor:pointer}@media(max-width:800px){body{overflow:auto}.launcher{width:100vw;height:100vh;margin:0;border-radius:0}.sidebar{width:70px}.username{display:none}.nav-bar li{justify-content:center;padding:15px 5px}.nav-bar li span:last-child{display:none}.nav-icon{margin:0}.top-nav{overflow:auto}.top-nav ul{white-space:nowrap}.installations{gap:10px}.installations>div{flex:1;min-width:0}.installations button{padding:10px 20px}.bottom-bar{font-size:10px}}
   </style>
 </head>
 <body>
   <div class="launcher">
-    <span class="title-bar">Mineaglercraft Launcher</span>
+    <span class="title-bar">MineXLauncher</span>
     <div class="content">
       <aside class="sidebar">
-        <span class="username">Mineaglercraft</span>
-        <nav class="nav-bar" aria-label="Launcher navigation">
-          <li class="selected" data-tab="game"><span>🎮</span><span>Game</span></li>
-          <li data-tab="clients"><span>🧩</span><span>Clients</span></li>
-          <li data-tab="servers"><span>🌐</span><span>Server List</span></li>
-          <li data-tab="settings"><span>⚙️</span><span>Settings</span></li>
+        <span class="username">MineXLauncher</span>
+        <nav class="nav-bar">
+          <li class="selected"><span class="nav-icon">🎮</span><span>Game</span></li>
+          <li><span class="nav-icon">🧩</span><span>Clients</span></li>
+          <li><span class="nav-icon">🌐</span><span>Server List</span></li>
+          <li><span class="nav-icon">🛠️</span><span>Mods</span></li>
+          <li><span class="nav-icon">📖</span><span>Tutorials</span></li>
+          <li><span class="nav-icon">⚙️</span><span>Settings</span></li>
         </nav>
       </aside>
       <main class="main-panel">
-        <nav class="top-nav" aria-label="Game navigation">
-          <ul><li class="selected">Game</li><li>Clients</li><li>Archive</li><li>Offline Downloads</li></ul>
-        </nav>
-        <section class="main-content">
-          <div class="hero"><h1>MINEAGLERCRAFT</h1><p>Play Eaglercraft directly in your browser</p></div>
-        </section>
+        <nav class="top-nav"><ul><li class="selected">Game</li><li>Clients</li><li>Archive</li><li>Offline Downloads</li></ul></nav>
+        <section class="main-content"><div class="logo">MINEAGLERCRAFT</div><div class="subtitle">MineXLauncher-style Eaglercraft launcher</div></section>
         <div class="installations">
-          <div class="selector-wrap">
-            <div class="selector" id="selector" role="button" tabindex="0">Selected: 1.8.8</div>
+          <div>
+            <div class="selector" id="selector">Selected: 1.8.8</div>
             <div class="options" id="options">
-              <div data-name="1.8.8"><span>🟩</span><span>1.8.8</span></div>
-              <div data-name="1.12.2"><span>🟫</span><span>1.12.2</span></div>
-              <div data-name="1.20.4"><span>🟦</span><span>1.20.4</span></div>
+              <div data-url="https://eaglercraft.com/play?version=1.8.8-wasm" data-name="1.8.8"><span class="version-icon">🌿</span><span>1.8.8</span></div>
+              <div data-url="https://eaglercraft.com/play?version=1.12.2" data-name="1.12.2"><span class="version-icon">🟫</span><span>1.12.2</span></div>
+              <div data-url="https://eaglercraft.com/play?version=1.20.4" data-name="1.20.4"><span class="version-icon">🟦</span><span>1.20.4</span></div>
             </div>
           </div>
-          <button class="play" id="play" type="button">Play</button>
+          <button id="play" type="button">Play</button>
         </div>
       </main>
     </div>
-    <div class="bottom-bar"><span onclick="window.open('https://github.com/phngphwanh-design/mineaglercraft','_blank')">Mineaglercraft GitHub</span><span>© 2026 Mineaglercraft</span></div>
+    <div class="bottom-bar"><span onclick="window.open('https://github.com/phngphwanh-design/mineaglercraft','_blank')">Mineaglercraft GitHub</span><span>© 2026 MineXLauncher</span></div>
   </div>
+  <div class="game-overlay" id="gameOverlay"><button class="close-game" id="closeGame">Close</button><iframe id="gameFrame" title="Eaglercraft"></iframe></div>
   <script>
-    const GAME_URL = 'https://eaglercraft.com/play?version=1.8.8-wasm';
-    const selector = document.getElementById('selector');
-    const options = document.getElementById('options');
-    let selectedVersion = '1.8.8';
-    selector.addEventListener('click', () => options.classList.toggle('open'));
-    selector.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') options.classList.toggle('open'); });
-    options.querySelectorAll('[data-name]').forEach(option => option.addEventListener('click', () => {
-      selectedVersion = option.dataset.name;
-      selector.textContent = `Selected: ${selectedVersion}`;
-      options.classList.remove('open');
-    }));
-    document.addEventListener('click', event => { if (!event.target.closest('.selector-wrap')) options.classList.remove('open'); });
-    document.getElementById('play').addEventListener('click', () => {
-      // MineXLauncher uses game.play(); this static version redirects to the complete game website.
-      window.location.href = GAME_URL;
-    });
+    let selectedVersion='https://eaglercraft.com/play?version=1.8.8-wasm';
+    const selector=document.getElementById('selector'), options=document.getElementById('options');
+    selector.addEventListener('click',()=>options.classList.toggle('open'));
+    document.querySelectorAll('[data-url]').forEach(item=>item.addEventListener('click',()=>{selectedVersion=item.dataset.url;selector.textContent='Selected: '+item.dataset.name;options.classList.remove('open')}));
+    document.addEventListener('click',event=>{if(!event.target.closest('.installations'))options.classList.remove('open')});
+    document.getElementById('play').addEventListener('click',()=>{window.location.href=selectedVersion});
   </script>
 </body>
 </html>
