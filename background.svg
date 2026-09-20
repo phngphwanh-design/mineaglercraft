@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#6979a5"/><stop offset=".62" stop-color="#d7805e"/><stop offset="1" stop-color="#f19c53"/></linearGradient>
+    <linearGradient id="ground" x2="0" y2="1"><stop stop-color="#174c21"/><stop offset="1" stop-color="#07150b"/></linearGradient>
+    <pattern id="trees" width="90" height="80" patternUnits="userSpaceOnUse"><rect x="40" y="39" width="9" height="41" fill="#291d14"/><path d="M44 0 12 43h20L8 65h72L55 43h21z" fill="#092d14"/><path d="m44 13-20 30h14L20 57h48L51 43h16z" fill="#10521e"/></pattern>
+  </defs>
+  <rect width="1600" height="760" fill="url(#sky)"/>
+  <g fill="#d8d9de" opacity=".75"><path d="M0 30h290l35 46H90zM490 0h215l-35 44H510zM1050 30h220l-45 52h-220zM1330 0h270v42h-170zM770 94h180l-35 48H790z"/></g>
+  <circle cx="810" cy="335" r="63" fill="#fffbd0"/>
+  <path fill="#291d1a" d="M0 270 130 180l130 95 100-55 150 125 130-70 170 110 160-112 155 108 135-95 165 130 175-150v300H0z"/>
+  <path fill="#51372a" d="M0 335 145 250l100 105 140-80 145 130 160-90 155 120 145-107 160 96 150-84 150 100 145-118v270H0z"/>
+  <path fill="url(#ground)" d="M0 480q150-75 305 0t310 0 315 0 340 0 330 0v280H0z"/>
+  <rect y="510" width="1600" height="250" fill="url(#trees)" opacity=".95"/>
+  <path fill="#124cce" opacity=".75" d="M0 645q180-35 340 20t330-4 330 15 600-20v84H0z"/>
+  <path fill="#246d28" d="M0 555h1600v45H0z" opacity=".35"/>
+</svg>
